@@ -23,7 +23,7 @@
 #include "assignment.h"
 
 void SystemClock_Config(void);
-uint8_t check_button_state(GPIO_TypeDef* PORT, uint8_t PIN);
+uint8_t check_button_state(GPIO_TypeDef* PORT, uint8_t PIN, uint8_t edge, uint8_t samples_window, uint8_t samples_required);
 
 uint8_t switch_state = 0;
 
@@ -54,9 +54,10 @@ int main(void)
 
   NVIC_SetPriority(EXTI4_IRQn, 2);
   NVIC_EnableIRQ(EXTI4_IRQn);
-  /*set EXTI source PA3*/
-  SYSCFG->EXTICR[1] &= ~(0xEU << 0U);
-  //Enable interrupt from EXTI line 3
+  /*set EXTI source PB4*/
+  SYSCFG->EXTICR[1] &= ~(0xFU << 0U);
+  SYSCFG->EXTICR[1] |= (1 << 0U);
+  //Enable interrupt from EXTI line 4
     EXTI->IMR |= EXTI_IMR_MR4;
     //Set EXTI trigger to falling edge
     EXTI->RTSR &= ~(EXTI_IMR_MR4);
