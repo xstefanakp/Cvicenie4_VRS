@@ -58,6 +58,7 @@ int main(void)
   /* Enable clock for GPIO port B*/
   RCC_AHBENR_REG |= (uint32_t)(1 << 18);
 
+  //moder GPIOB:
   *GPIOB_MODER_REG 	&= ~(uint32_t)(0x3 << 8);
 
 	  //type your code for GPIO configuration here:
@@ -68,17 +69,23 @@ int main(void)
   /* Enable clock for GPIO port A*/
   RCC_AHBENR_REG |= (uint32_t)(1 << 17);
 
-
+  //moder GPIOA:
   *GPIOA_MODER_REG	&= ~(uint32_t)(0x3 << 8);
   *GPIOA_MODER_REG	|= (uint32_t)(1 << 8);
+
+  //out:
   *GPIOA_OTYPER_REG &= ~(1 << 4);
 
+  //speed GPIOA:
   *GPIOA_OSPEEDER_REG &= ~(0x3 << 8);
 
   /*GPIO PUPDR register, reset*/
+
      //Set pull up for GPIOB pin 4 (input)
    *GPIOB_PUPDR_REG |= (1 << 8);
-   //Set no pull for GPIOA pin 4
+
+
+   //Set no pull for GPIOA pin 4 (output)
    *GPIOA_PUPDR_REG &= ~(0x3 << 8);
 
 
