@@ -55,38 +55,19 @@ int main(void)
 
   /* Configure GPIOB-4 pin as an input pin - button */
 
-  /* Enable clock for GPIO port B*/
-  RCC_AHBENR_REG |= (uint32_t)(1 << 18);
+  /*GPIO configuration, PA3*/
+  RCC->AHBENR |= RCC_AHBENR_GPIOBEN;
+  GPIOB->MODER &= ~(GPIO_MODER_MODER4);
+  GPIOB->PUPDR &= ~(GPIO_PUPDR_PUPDR4);
+  GPIOB->PUPDR |= GPIO_PUPDR_PUPDR4_0;
 
-  //moder GPIOB:
-  *GPIOB_MODER_REG 	&= ~(uint32_t)(0x3 << 8);
-
-	  //type your code for GPIO configuration here:
-
-
-  /* Configure GPIOA-4 pin as an output pin - LED */
-
-  /* Enable clock for GPIO port A*/
-  RCC_AHBENR_REG |= (uint32_t)(1 << 17);
-
-  //moder GPIOA:
-  *GPIOA_MODER_REG	&= ~(uint32_t)(0x3 << 8);
-  *GPIOA_MODER_REG	|= (uint32_t)(1 << 8);
-
-  //out:
-  *GPIOA_OTYPER_REG &= ~(1 << 4);
-
-  //speed GPIOA:
-  *GPIOA_OSPEEDER_REG &= ~(0x3 << 8);
-
-  /*GPIO PUPDR register, reset*/
-
-     //Set pull up for GPIOB pin 4 (input)
-   *GPIOB_PUPDR_REG |= (1 << 8);
-
-
-   //Set no pull for GPIOA pin 4 (output)
-   *GPIOA_PUPDR_REG &= ~(0x3 << 8);
+  /*GPIO configuration, PB3*/
+  RCC->AHBENR |= RCC_AHBENR_GPIOAEN;
+  GPIOA->MODER &= ~(GPIO_MODER_MODER4);
+  GPIOA->MODER |= GPIO_MODER_MODER3_0;
+  GPIOA->OTYPER &= ~(GPIO_OTYPER_OT_4);
+  GPIOA->OSPEEDR &= ~(GPIO_OSPEEDER_OSPEEDR4);
+  GPIOA->PUPDR &= ~(GPIO_PUPDR_PUPDR4);
 
 
 
