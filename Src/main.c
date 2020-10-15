@@ -55,8 +55,10 @@ int main(void)
 
   /* Configure GPIOB-4 pin as an input pin - button */
 
-  /* Enable clock for GPIO port A*/
+  /* Enable clock for GPIO port B*/
   RCC_AHBENR_REG |= (uint32_t)(1 << 18);
+
+  *GPIOB_MODER_REG 	&= ~(uint32_t)(0x3 << 8);
 
 	  //type your code for GPIO configuration here:
 
@@ -65,6 +67,10 @@ int main(void)
 
   /* Enable clock for GPIO port A*/
   RCC_AHBENR_REG |= (uint32_t)(1 << 17);
+
+
+  *GPIOA_MODER_REG	&= ~(uint32_t)(0x3 << 8);
+  *GPIOA_MODER_REG	|= (uint32_t)(1 << 8);
 
 
 
