@@ -55,16 +55,16 @@ int main(void)
 
   /* Configure GPIOB-4 pin as an input pin - button */
 
-  /*GPIO configuration, PA3*/
+  /*GPIO configuration, PB4(input)*/
   RCC->AHBENR |= RCC_AHBENR_GPIOBEN;
   GPIOB->MODER &= ~(GPIO_MODER_MODER4);
   GPIOB->PUPDR &= ~(GPIO_PUPDR_PUPDR4);
   GPIOB->PUPDR |= GPIO_PUPDR_PUPDR4_0;
 
-  /*GPIO configuration, PB3*/
+  /*GPIO configuration, PA4(output)*/
   RCC->AHBENR |= RCC_AHBENR_GPIOAEN;
   GPIOA->MODER &= ~(GPIO_MODER_MODER4);
-  GPIOA->MODER |= GPIO_MODER_MODER3_0;
+  GPIOA->MODER |= GPIO_MODER_MODER4_0;
   GPIOA->OTYPER &= ~(GPIO_OTYPER_OT_4);
   GPIOA->OSPEEDR &= ~(GPIO_OSPEEDER_OSPEEDR4);
   GPIOA->PUPDR &= ~(GPIO_PUPDR_PUPDR4);
