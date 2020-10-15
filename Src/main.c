@@ -55,6 +55,8 @@ int main(void)
   NVIC_SetPriority(EXTI4_IRQn, 2);
   NVIC_EnableIRQ(EXTI4_IRQn);
 
+  SYSCFG->EXTICR[1] &= ~(0xEU << 0U);
+
 
   /* Configure GPIOB-4 pin as an input pin - button */
 
