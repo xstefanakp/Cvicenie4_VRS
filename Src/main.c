@@ -159,6 +159,7 @@ void EXTI4_IRQHandler(void)
 	/* Clear EXTI4 pending register flag */
 
 		//type your code for pending register flag clear here:
+	EXTI->PR |= (EXTI_PR_PIF4);
 }
 
 /* USER CODE BEGIN 4 */
