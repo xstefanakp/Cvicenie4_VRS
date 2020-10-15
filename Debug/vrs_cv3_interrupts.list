@@ -970,34 +970,34 @@ void EXTI4_IRQHandler(void)
  800070c:	9300      	str	r3, [sp, #0]
  800070e:	231e      	movs	r3, #30
  8000710:	2201      	movs	r2, #1
- 8000712:	2103      	movs	r1, #3
- 8000714:	f04f 4090 	mov.w	r0, #1207959552	; 0x48000000
- 8000718:	f7ff ffe0 	bl	80006dc <checkButtonState>
- 800071c:	4603      	mov	r3, r0
- 800071e:	2b00      	cmp	r3, #0
- 8000720:	d006      	beq.n	8000730 <EXTI4_IRQHandler+0x2c>
+ 8000712:	2104      	movs	r1, #4
+ 8000714:	4807      	ldr	r0, [pc, #28]	; (8000734 <EXTI4_IRQHandler+0x30>)
+ 8000716:	f7ff ffe1 	bl	80006dc <checkButtonState>
+ 800071a:	4603      	mov	r3, r0
+ 800071c:	2b00      	cmp	r3, #0
+ 800071e:	d006      	beq.n	800072e <EXTI4_IRQHandler+0x2a>
 						GPIO_PIN_BUTTON,
 						BUTTON_EXTI_TRIGGER,
 						BUTTON_EXTI_SAMPLES_WINDOW,
 						BUTTON_EXTI_SAMPLES_REQUIRED))
 	{
 		switch_state ^= 1;
- 8000722:	4b05      	ldr	r3, [pc, #20]	; (8000738 <EXTI4_IRQHandler+0x34>)
- 8000724:	781b      	ldrb	r3, [r3, #0]
- 8000726:	f083 0301 	eor.w	r3, r3, #1
- 800072a:	b2da      	uxtb	r2, r3
- 800072c:	4b02      	ldr	r3, [pc, #8]	; (8000738 <EXTI4_IRQHandler+0x34>)
- 800072e:	701a      	strb	r2, [r3, #0]
+ 8000720:	4b05      	ldr	r3, [pc, #20]	; (8000738 <EXTI4_IRQHandler+0x34>)
+ 8000722:	781b      	ldrb	r3, [r3, #0]
+ 8000724:	f083 0301 	eor.w	r3, r3, #1
+ 8000728:	b2da      	uxtb	r2, r3
+ 800072a:	4b03      	ldr	r3, [pc, #12]	; (8000738 <EXTI4_IRQHandler+0x34>)
+ 800072c:	701a      	strb	r2, [r3, #0]
 	}
 
 	/* Clear EXTI4 pending register flag */
 
 		//type your code for pending register flag clear here:
 }
- 8000730:	bf00      	nop
- 8000732:	46bd      	mov	sp, r7
- 8000734:	bd80      	pop	{r7, pc}
- 8000736:	bf00      	nop
+ 800072e:	bf00      	nop
+ 8000730:	46bd      	mov	sp, r7
+ 8000732:	bd80      	pop	{r7, pc}
+ 8000734:	48000400 	.word	0x48000400
  8000738:	20000020 	.word	0x20000020
 
 0800073c <Error_Handler>:
