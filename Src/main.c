@@ -54,8 +54,14 @@ int main(void)
 
   NVIC_SetPriority(EXTI4_IRQn, 2);
   NVIC_EnableIRQ(EXTI4_IRQn);
-
+  /*set EXTI source PA3*/
   SYSCFG->EXTICR[1] &= ~(0xEU << 0U);
+  //Enable interrupt from EXTI line 3
+    EXTI->IMR |= EXTI_IMR_MR4;
+    //Set EXTI trigger to falling edge
+    EXTI->RTSR &= ~(EXTI_IMR_MR4);
+    EXTI->FTSR |= EXTI_IMR_MR4;
+
 
 
   /* Configure GPIOB-4 pin as an input pin - button */
